@@ -4,6 +4,41 @@
 #include "random-generator/instructions/gen-operand.h"
 
 /*
+ * P R E F I X
+ */
+typedef enum {
+  /* Group1: 0xF0H 0xF2H 0xF3H;
+   *         0xF2H
+   *   -Lock and repeat prefixes
+   *   -Bound prefix
+   */
+  LATXT_PREFIX_TYPE_GRP1,
+  /* Group2: 0x2EH 0x36H 0x3EH 0x26H 0x64H 0x65H;
+   *         0x2EH 0x3EH
+   *   -Segment override prefixes
+   *   -Branch hints
+   */
+  LATXT_PREFIX_TYPE_GRP2,
+  /* Group3: 0x66H
+   *   -Operand-size override prefix
+   */
+  LATXT_PREFIX_TYPE_GRP3,
+  /* Group3: 0x67H
+   *   -Address-size override prefix
+   */
+  LATXT_PREFIX_TYPE_GRP4,
+  LATXT_PREFIX_TYPE_LAST
+} LATXT_PREFIX_TYPE;
+
+struct latxt_prefix {
+  LATXT_PREFIX_TYPE type;
+  uint8_t len;
+  char* bytes;
+};
+
+#define MAX_PREFIX_COUNT 4
+
+/*
  * O P E R A N D S
  */
 
@@ -46,24 +81,7 @@ struct i386_insn_predef_info {
 };
 
 struct i386_insn {
-  struct {
-    // 15...0 opcode
-    uint16_t ia_opcode;
-  
-    //  7...4 (unused)
-    //  3...0 ilen (0..15)
-    uint8_t ilen;
-  
-    //  7...6 VEX Vector Length (0=no VL, 1=128 bit, 2=256 bit)
-    //        repUsed (0=none, 2=0xF2, 3=0xF3)
-    //  5...5 extend8bit
-    //  4...4 mod==c0 (modrm)
-    //  3...3 os64
-    //  2...2 os32
-    //  1...1 as64
-    //  0...0 as32
-    uint8_t metaInfo1;
-  } metaInfo;
+  struct latxt_prefix prefixes[MAX_PREFIX_COUNT];
 
   #define INSTR_METADATA_DST   0
   #define INSTR_METADATA_SRC1  1
