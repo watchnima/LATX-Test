@@ -1,8 +1,6 @@
 #ifndef TEST_INSTRUCTION_H
 #define TEST_INSTRUCTION_H
 
-#include "random-generator/instructions/gen-operand.h"
-
 /*
  * P R E F I X
  */
@@ -49,6 +47,42 @@ typedef enum {
   LATXT_OPERANDS_LAST
 } LATXT_OPERANDS_TYPE;
 #undef latxt_define_operands
+
+/* x86 instruction operand type */
+typedef enum {
+#define latxt_define_operand(a, b) a,
+#include "random-generator/instructions/insn-operand.h"
+  OPERAND_LAST
+} LATXT_OPERAND_TYPE;
+#undef latxt_define_operand
+
+struct latxt_operand {
+  LATXT_OPERAND_TYPE type;
+  uint8_t len;
+  uint8_t *bytes;
+};
+
+/*
+ * M O D R M
+ */
+/* operands type in mod r/m form */
+typedef enum {
+  /*          0x00 .. 0x07 */
+  EbGb,
+  EvGv,
+  GbEb,
+  GvEv,
+  ALIb,
+  eAXIz,
+
+  /*          0x80 .. 0x87 */
+  EbIb,
+  EvIz,
+  //EbIb_i64
+  EvIb,
+
+  MODRM_LAST
+} LATXT_OPCODE_MODRM;
 
 
 /*
