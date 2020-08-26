@@ -31,7 +31,6 @@ clean:
 	/bin/rm -rf $(OBJ_DIR)/*.o
 	/bin/rm -rf $(OBJ_DIR)/common/*.o
 	/bin/rm -rf $(OBJ_DIR)/ut-only/*.o
-	/bin/rm -rf $(LIB_DIR)/{*.a}
-	make -f Makefile.distorm clean
+	/bin/rm -rf $(LIB_DIR)/*.a
 
 .PHONY: all clean

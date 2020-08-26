@@ -16,13 +16,11 @@ COBJS	= ./distorm/src/mnemonics.o \
 CFLAGS	+= -fPIC -O2 -Wall
 
 all: clib
-	test -d $(LIB_DIR) || mkdir -p $(LIB_DIR)
-
-clean:
-	/bin/rm -rf ./distorm/src/*.o $(LIB_DIR)/$(TARGET_NAME)
 
 clib: ${COBJS}
+	test -d $(LIB_DIR) || mkdir -p $(LIB_DIR)
 	ar rs $(LIB_DIR)/$(TARGET_NAME) ${COBJS}
+	/bin/rm -rf ./distorm/src/*.o
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o $@
