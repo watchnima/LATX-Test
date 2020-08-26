@@ -2,7 +2,6 @@ include ../../config_host.mak
 
 obj := gen-insn.o \
 			 gen-operand.o
-random-generator-obj += $(obj)
 
 all: $(obj)
 

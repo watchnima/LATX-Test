@@ -1,0 +1,29 @@
+#
+# diStorm3 (Linux Port)
+#
+
+include ./config_host.mak
+
+TARGET_NAME	= libdistorm3.a
+COBJS	= ./distorm/src/mnemonics.o \
+				./distorm/src/textdefs.o \
+				./distorm/src/prefix.o \
+				./distorm/src/operands.o \
+				./distorm/src/insts.o \
+				./distorm/src/instructions.o \
+				./distorm/src/distorm.o \
+				./distorm/src/decoder.o
+CFLAGS	+= -fPIC -O2 -Wall
+
+all: clib
+	test -d $(LIB_DIR) || mkdir -p $(LIB_DIR)
+
+clean:
+	/bin/rm -rf ./distorm/src/*.o $(LIB_DIR)/$(TARGET_NAME)
+
+clib: ${COBJS}
+	ar rs $(LIB_DIR)/$(TARGET_NAME) ${COBJS}
+
+.c.o:
+	${CC} ${CFLAGS} -c $< -o $@
+

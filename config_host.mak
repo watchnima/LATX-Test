@@ -8,6 +8,8 @@ SRC_PATH = /home/lawrence/Workspace/git/LATX-Test
 
 OBJ_DIR = $(SRC_PATH)/obj
 
+LIB_DIR = $(OBJ_DIR)/lib
+
 INCLUDE_DIR = $(SRC_PATH)/include
 
 # all objects list

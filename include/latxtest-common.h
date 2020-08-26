@@ -10,4 +10,6 @@
 
 #include "log.h"
 
+#define CONFIG_DISPLAY 1
+
 #endif

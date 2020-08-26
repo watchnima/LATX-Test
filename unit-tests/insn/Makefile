@@ -2,7 +2,6 @@ include ../../config_host.mak
 
 obj := test-arith.o \
 			 code-cache.o
-unit-tests-obj += $(obj)
 
 all: $(obj)
 

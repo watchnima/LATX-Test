@@ -4,7 +4,8 @@ TARGET := ut
 
 all:$(TARGET)
 
-common-subdir = random-generator
+common-subdir = random-generator \
+								tools
 ut-only-subdir = unit-tests
 
 common:
@@ -19,13 +20,18 @@ ut-only:
 		make -C $$dir; \
 	done
 
-ut:common ut-only
-	$(CC) $(CFLAGS) -o ut $(OBJ_DIR)/common/*.o $(OBJ_DIR)/ut-only/*.o
+distorm-32: distorm/src/*.c
+	make -f Makefile.distorm
+
+ut:common ut-only distorm-32
+	$(CC) $(CFLAGS) $(OBJ_DIR)/common/*.o $(OBJ_DIR)/ut-only/*.o -L$(LIB_DIR) -ldistorm3 -o ut
 
 clean:
-	rm -rf obj/*.o
-	rm -rf common/*.o
-	rm -rf ut-only/*.o
-	rm $(TARGET)
+	/bin/rm -rf ut
+	/bin/rm -rf $(OBJ_DIR)/*.o
+	/bin/rm -rf $(OBJ_DIR)/common/*.o
+	/bin/rm -rf $(OBJ_DIR)/ut-only/*.o
+	/bin/rm -rf $(LIB_DIR)/{*.a}
+	make -f Makefile.distorm clean
 
 .PHONY: all clean

@@ -3,7 +3,6 @@ include ../config_host.mak
 SUB_DIR := insn
 
 obj = ut-main.o
-unit-tests-obj += $(obj)
 
 all: $(obj)
 	for subdir in $(SUB_DIR); do \

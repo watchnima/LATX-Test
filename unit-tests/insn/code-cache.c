@@ -1,6 +1,10 @@
 #include "latxtest-common.h"
 #include "unit-tests/code-cache.h"
 
+#ifdef CONFIG_DISPLAY
+#include "tools/insn-display.h"
+#endif
+
 char *ccache_bytes;
 uint32_t ccache_len;
 
@@ -56,6 +60,9 @@ void ccache_tail_wrap(void) {
 
 void ccache_execute(void) {
   latxassert(ccache_len >= CCACHE_HEAD_SIZE + CCACHE_TAIL_SIZE);
+#ifdef CONFIG_DISPLAY
+  display_codes(ccache_bytes, ccache_len);
+#endif
   __asm__ __volatile__ (
     "mov %0, %%eax\n\t"
     "call *%%eax\n\t"
