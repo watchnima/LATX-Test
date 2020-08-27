@@ -5,7 +5,7 @@
                                   { \
                                     .predef_info = \
                                     { \
-                                      .ispredefined.opcode.type = true, \
+                                      .ispredef_opcode_type = true, \
                                       .opcode = \
                                       { \
                                         .type = a \

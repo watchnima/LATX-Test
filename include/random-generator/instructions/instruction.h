@@ -162,6 +162,16 @@ struct latxt_i386_insn_predef_info {
       bool imm;
     } operands;
   } ispredefined;
+#define ispredef_prefixes ispredefined.prefixes
+
+#define ispredef_opcode_type ispredefined.opcode.type
+#define ispredef_opcode_bytes ispredefined.opcode.bytes
+
+#define ispredef_operands_type ispredefined.operands.type
+#define ispredef_operands_modrm ispredefined.operands.modrm
+#define ispredef_operands_sib ispredefined.operands.sib
+#define ispredef_operands_disp ispredefined.operands.disp
+#define ispredef_operands_imm ispredefined.operands.imm
 
   struct latxt_opcode opcode;
   struct latxt_prefix prefixes[MAX_PREFIX_COUNT];
