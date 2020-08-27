@@ -8,7 +8,7 @@
 static bool test_add(void) {
   ccache_head_wrap();
 
-  add_seed.predef_info.operandsType = R8_IMM8;
+  add_seed.predef_info.operands.type = R8_IMM8;
   gen_random_insn(&add_seed);
   printl("instruction generated: add AL,0x0f: 0x%02x%02x\n", add_seed.bytes[0], 
          add_seed.bytes[1]);

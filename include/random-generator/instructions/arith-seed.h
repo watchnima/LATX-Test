@@ -5,7 +5,11 @@
                                   { \
                                     .predef_info = \
                                     { \
-                                      .opcodeType = a \
+                                      .ispredefined.opcode.type = true, \
+                                      .opcode = \
+                                      { \
+                                        .type = a \
+                                      } \
                                     } \
                                   };
 #include "random-generator/instructions/insn-opcode.h"

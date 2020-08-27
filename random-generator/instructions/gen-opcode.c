@@ -59,9 +59,9 @@ struct opcodeInfo OpcodeMap[X86_ISA_LAST][MODRM_LAST] =
 };
 
 static LATXT_OPCODE_MODRM 
-operands_type_to_rmform(struct i386_insn_predef_info *predef_info)
+operands_type_to_rmform(struct latxt_i386_insn_predef_info *predef_info)
 {
-  LATXT_OPERANDS_TYPE operandsType = predef_info->operandsType;
+  LATXT_OPERANDS_TYPE operandsType = predef_info->operands.type;
   LATXT_OPCODE_MODRM modrm = MODRM_LAST;
   switch(operandsType) {
     case R8_R8:
@@ -108,13 +108,13 @@ operands_type_to_rmform(struct i386_insn_predef_info *predef_info)
 }
 
 uint8_t gen_opcode(uint8_t *opcode_buf, 
-                          struct i386_insn_predef_info *predef_info)
+                          struct latxt_i386_insn_predef_info *predef_info)
 {
   uint8_t opcode_len = -1;
   LATXT_OPCODE_MODRM modrm;
   modrm = operands_type_to_rmform(predef_info);
   assert(modrm < MODRM_LAST);
-  struct opcodeInfo *curr_opcode = &OpcodeMap[predef_info->opcodeType][modrm];
+  struct opcodeInfo *curr_opcode = &OpcodeMap[predef_info->opcode.type][modrm];
   opcode_len = curr_opcode->len;
   for (int i = 0; i < curr_opcode->len; ++i) {
     opcode_buf[i] = curr_opcode->bytes[i];

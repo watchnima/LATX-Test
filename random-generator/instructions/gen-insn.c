@@ -7,7 +7,7 @@
 uint8_t gen_random_insn(X86_INSN* insn_seed) {
   uint8_t opcode_len = 0, operands_len = 0;
   char *insn_buf = insn_seed->bytes;
-  struct i386_insn_predef_info *predef_info = &insn_seed->predef_info;
+  struct latxt_i386_insn_predef_info *predef_info = &insn_seed->predef_info;
 
   if ((opcode_len = gen_opcode(insn_buf, predef_info)) == -1)
     return false;

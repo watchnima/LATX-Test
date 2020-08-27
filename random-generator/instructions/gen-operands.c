@@ -85,10 +85,10 @@ gen_opnd_func_type gen_operand_funcs[OPERAND_LAST] = {
 #undef latxt_define_operand
 
 uint8_t gen_operands(uint8_t *operands_buf,
-                            struct i386_insn_predef_info *predef_info)
+                            struct latxt_i386_insn_predef_info *predef_info)
 {
-  LATXT_OPCODE_TYPE opcodeType = predef_info->opcodeType;
-  LATXT_OPERANDS_TYPE operandsType = predef_info->operandsType;
+  LATXT_OPCODE_TYPE opcodeType = predef_info->opcode.type;
+  LATXT_OPERANDS_TYPE operandsType = predef_info->operands.type;
   LATXT_OPERAND_TYPE src1Type, src2Type;
   src1Type = operandsTable[operandsType].src1;
   src2Type = operandsTable[operandsType].src2;
