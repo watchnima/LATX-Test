@@ -36,30 +36,35 @@ char ccache_tail[CCACHE_TAIL_SIZE] =
   0xc3          /* ret                      */
 };
 
-void ccache_init(void) {
+void ccache_init(void)
+{
   ccache_bytes = (char *)aligned_alloc(CCACHE_PAGE_SIZE, CCACHE_SIZE);
   mprotect(ccache_bytes, CCACHE_SIZE, PROT_READ|PROT_EXEC|PROT_WRITE);
   ccache_len = 0;
 }
 
-void ccache_finish(void) {
+void ccache_finish(void)
+{
   free(ccache_bytes);
 }
 
-void ccache_head_wrap(void) {
-  latxassert(ccache_bytes != NULL);
+void ccache_head_wrap(void)
+{
+  latxtassert(ccache_bytes != NULL);
   memcpy(ccache_bytes, ccache_head, CCACHE_HEAD_SIZE);
   ccache_len = CCACHE_HEAD_SIZE;
 }
 
-void ccache_tail_wrap(void) {
-  latxassert(ccache_len + CCACHE_TAIL_SIZE <= CCACHE_SIZE);
+void ccache_tail_wrap(void)
+{
+  latxtassert(ccache_len + CCACHE_TAIL_SIZE <= CCACHE_SIZE);
   memcpy(ccache_bytes + ccache_len, ccache_tail, CCACHE_TAIL_SIZE);
   ccache_len += CCACHE_TAIL_SIZE;
 }
 
-void ccache_execute(void) {
-  latxassert(ccache_len >= CCACHE_HEAD_SIZE + CCACHE_TAIL_SIZE);
+void ccache_execute(void)
+{
+  latxtassert(ccache_len >= CCACHE_HEAD_SIZE + CCACHE_TAIL_SIZE);
 #ifdef CONFIG_DISPLAY
   display_codes(ccache_bytes, ccache_len);
 #endif
@@ -71,11 +76,12 @@ void ccache_execute(void) {
   );
 }
 
-uint32_t ccache_put_bytes(char *codes, uint32_t len) {
+uint32_t ccache_put_bytes(char *codes, uint32_t len)
+{
   if ((uint32_t)(CCACHE_SIZE - CCACHE_TAIL_SIZE - ccache_len) < len) {
     /* Can not store more instructions.
      * Not abort. Just execute the codes got so far.*/
-    latxwarning("Generated codes overflow!");
+    latxtwarning("Generated codes overflow!");
     return 0;
   }
   memcpy(ccache_bytes + ccache_len, codes, len);

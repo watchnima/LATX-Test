@@ -4,7 +4,8 @@
 #include "random-generator/instructions/gen-opcode.h"
 #include "random-generator/instructions/gen-operands.h"
 
-uint8_t gen_random_insn(X86_INSN* insn_seed) {
+uint8_t gen_random_insn(X86_INSN* insn_seed)
+{
   uint8_t opcode_len = 0, operands_len = 0;
   char *insn_buf = insn_seed->bytes;
   struct latxt_i386_insn_predef_info *predef_info = &insn_seed->predef_info;

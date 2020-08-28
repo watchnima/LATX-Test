@@ -5,6 +5,6 @@
 void display_codes(char *code, uint32_t code_len)
 {
   if (!distorm_display((const unsigned char *)code, (int)code_len)) {
-    latxwarning("Distorm display error");
+    latxtwarning("Distorm display error");
   }
 }

@@ -3,7 +3,7 @@
 
 #define printl printf
 
-#define latxassert(cond) \
+#define latxtassert(cond) \
   do { \
     if (!(cond)) { \
       fprintf(stderr, \
@@ -13,7 +13,7 @@
     } \
   } while (0)
 
-#define latxassertm(cond, ...) \
+#define latxtassertm(cond, ...) \
   do { \
     if (!(cond)) { \
       fprintf(stderr, "\033[31m assertion failed in <%s> %s:%d \033[m", \
@@ -23,7 +23,7 @@
     } \
   } while(0)
 
-#define latxwarning(...) \
+#define latxtwarning(...) \
   do { \
     fprintf(stderr, "\033[31m warning in <%s> %s:%d \033[m", \
             __FUNCTION__, __FILE__, __LINE__); \

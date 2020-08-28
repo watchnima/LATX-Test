@@ -40,6 +40,7 @@ latxt_define_opcode(X86_ISA_MOV, mov, typical_binary)
 latxt_define_opcode(X86_ISA_MOVSX, movsx, typical_binary)
 latxt_define_opcode(X86_ISA_MOVZX, movzx, typical_binary)
 latxt_define_opcode(X86_ISA_PUSH, push, typical_binary)
+latxt_define_opcode(X86_ISA_POP, pop, typical_binary)
 /* jcc */
 latxt_define_opcode(X86_ISA_JA, ja, typical_binary)
 latxt_define_opcode(X86_ISA_JBE, jbe, typical_binary)

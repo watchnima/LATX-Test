@@ -1,6 +1,8 @@
 #ifndef TEST_INSTRUCTION_H
 #define TEST_INSTRUCTION_H
 
+
+
 /* ========================================================================= */
 /* P R E F I X                                                               */
 /* ========================================================================= */
@@ -52,25 +54,6 @@ typedef enum {
 /* 
  * MODRM
  */
-/* operands type in mod r/m form */
-typedef enum {
-  /*          0x00 .. 0x07 */
-  EbGb,
-  EvGv,
-  GbEb,
-  GvEv,
-  ALIb,
-  eAXIz,
-
-  /*          0x80 .. 0x87 */
-  EbIb,
-  EvIz,
-  //EbIb_i64
-  EvIb,
-
-  MODRM_LAST
-} LATXT_OPCODE_MODRM;
-
 struct latxt_modrm {
 #define MODRM_MOD_SHIFL 6
 #define MODRM_REG_SHIFT 3
@@ -141,6 +124,16 @@ struct latxt_opcode {
   char *bytes;
 };
 
+/* ========================================================================= */
+/* M I S C                                                                   */
+/* ========================================================================= */
+
+#include "random-generator/instructions/insn-operands-abbrev.h"
+
+struct latxt_jump_info {
+  LATXT_JUMP_TYPE type;
+  LATXT_JUMP_CONDITION condition;
+};
 
 /* ========================================================================= */
 /* I N S T R U C T I O N                                                     */
@@ -154,18 +147,30 @@ struct latxt_i386_insn_predef_info {
       bool type;
       bool bytes;
     } opcode;
-    struct {
-      bool type;
-      bool modrm;
-      bool sib;
-      bool disp;
-      bool imm;
-    } operands;
+    union {
+      bool reg;
+      struct {
+        bool type;
+        bool condition;
+      } j;
+      struct {
+        bool type;
+        bool modrm;
+        bool sib;
+        bool disp;
+        bool imm;
+      } operands;
+    };
   } ispredefined;
 #define ispredef_prefixes ispredefined.prefixes
 
 #define ispredef_opcode_type ispredefined.opcode.type
 #define ispredef_opcode_bytes ispredefined.opcode.bytes
+
+#define ispredef_pp_reg ispredefined.reg
+
+#define ispredef_j_type ispredefined.j.type
+#define ispredef_j_condition ispredefined.j.condition
 
 #define ispredef_operands_type ispredefined.operands.type
 #define ispredef_operands_modrm ispredefined.operands.modrm
@@ -175,7 +180,11 @@ struct latxt_i386_insn_predef_info {
 
   struct latxt_opcode opcode;
   struct latxt_prefix prefixes[MAX_PREFIX_COUNT];
-  struct latxt_operands operands;
+  union {
+    LATXT_PP_REG pp_reg;
+    struct latxt_jump_info jump;
+    struct latxt_operands operands;
+  };
 };
 
 struct latxt_i386_insn {

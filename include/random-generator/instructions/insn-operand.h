@@ -5,6 +5,8 @@
 
 /*TODO: complete */
 
+latxt_define_operand(LATXT_OPERAND_NONE, gen_none)
+  
 latxt_define_operand(R8, gen_r8)
 latxt_define_operand(R16, gen_r16)
 latxt_define_operand(R32, gen_r32)

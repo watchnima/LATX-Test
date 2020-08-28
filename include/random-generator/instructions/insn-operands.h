@@ -7,6 +7,10 @@
 /* TODO: complete */
 
 /* Typical binary */
+latxt_define_operands(AL_IMM8, IMM8, LATXT_OPERAND_NONE)
+latxt_define_operands(AX_IMM16, IMM16, LATXT_OPERAND_NONE)
+latxt_define_operands(EAX_IMM32, IMM32, LATXT_OPERAND_NONE)
+
 latxt_define_operands(R8_IMM8, R8, IMM8)
 latxt_define_operands(R16_IMM8, R16, IMM8)
 latxt_define_operands(R16_IMM16, R16, IMM16)
