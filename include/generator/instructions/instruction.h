@@ -45,7 +45,7 @@ struct latxt_prefix {
 
 /* x86 instruction operands enumeration */
 typedef enum {
-#define latxt_define_operands(a, b, c) a,
+#define latxt_define_operands(a, b, c, d, e) a,
 #include "generator/instructions/insn-operands.h"
   LATXT_OPERANDS_LAST
 } LATXT_OPERANDS_TYPE;
