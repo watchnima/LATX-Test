@@ -1,7 +1,7 @@
 #include "latxtest-common.h"
-#include "random-generator/instructions/instruction.h"
-#include "random-generator/instructions/gen-insn.h"
-#include "random-generator/instructions/arith-seed.h"
+#include "generator/instructions/instruction.h"
+#include "generator/instructions/gen-insn.h"
+#include "generator/instructions/arith-seed.h"
 #include "unit-tests/insn-test.h"
 #include "unit-tests/code-cache.h"
 

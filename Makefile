@@ -4,7 +4,7 @@ TARGET := ut
 
 all:$(TARGET)
 
-common-subdir = random-generator \
+common-subdir = generator \
 								tools
 ut-only-subdir = unit-tests
 

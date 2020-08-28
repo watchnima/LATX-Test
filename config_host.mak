@@ -11,7 +11,3 @@ OBJ_DIR = $(SRC_PATH)/obj
 LIB_DIR = $(OBJ_DIR)/lib
 
 INCLUDE_DIR = $(SRC_PATH)/include
-
-# all objects list
-random-generator-obj =
-unit-tests-obj =

@@ -1,7 +1,7 @@
 #include "latxtest-common.h"
-#include "random-generator/instructions/instruction.h"
-#include "random-generator/instructions/insn-operands-abbrev.h"
-#include "random-generator/instructions/gen-opcode.h"
+#include "generator/instructions/instruction.h"
+#include "generator/instructions/insn-operands-abbrev.h"
+#include "generator/instructions/gen-opcode.h"
 
 struct latxt_opcode_info {
   uint8_t len;

@@ -4,7 +4,7 @@
 /* x86 instruction operand type */
 typedef enum {
 #define latxt_define_operand(a, b) a,
-#include "random-generator/instructions/insn-operand.h"
+#include "generator/instructions/insn-operand.h"
   OPERAND_LAST
 } LATXT_OPERAND_TYPE;
 #undef latxt_define_operand

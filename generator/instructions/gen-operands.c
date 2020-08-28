@@ -1,6 +1,6 @@
 #include "latxtest-common.h"
-#include "random-generator/instructions/instruction.h"
-#include "random-generator/instructions/gen-operands.h"
+#include "generator/instructions/instruction.h"
+#include "generator/instructions/gen-operands.h"
 
 #define random(x) (rand() % x)
 
@@ -23,7 +23,7 @@ struct operands_table {
 
 struct operands_table operandsTable[] = {
 #define latxt_define_operands(a, b, c) {b, c},
-#include "random-generator/instructions/insn-operands.h"
+#include "generator/instructions/insn-operands.h"
 };
 #undef latxt_define_operands
 
@@ -94,7 +94,7 @@ typedef void (*gen_opnd_func_type)(struct latxt_operand*);
 
 gen_opnd_func_type gen_operand_funcs[OPERAND_LAST] = {
 #define latxt_define_operand(a, b) b,
-#include "random-generator/instructions/insn-operand.h"
+#include "generator/instructions/insn-operand.h"
 };
 #undef latxt_define_operand
 

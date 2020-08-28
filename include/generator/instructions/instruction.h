@@ -46,7 +46,7 @@ struct latxt_prefix {
 /* x86 instruction operands enumeration */
 typedef enum {
 #define latxt_define_operands(a, b, c) a,
-#include "random-generator/instructions/insn-operands.h"
+#include "generator/instructions/insn-operands.h"
   LATXT_OPERANDS_LAST
 } LATXT_OPERANDS_TYPE;
 #undef latxt_define_operands
@@ -114,7 +114,7 @@ struct latxt_operands {
 /* x86 instruction set architecture opcodes */
 typedef enum {
 #define latxt_define_opcode(a, b, c) a,
-#include "random-generator/instructions/insn-opcode.h"
+#include "generator/instructions/insn-opcode.h"
   X86_ISA_LAST
 } LATXT_OPCODE_TYPE;
 #undef latxt_define_opcode
@@ -128,7 +128,7 @@ struct latxt_opcode {
 /* M I S C                                                                   */
 /* ========================================================================= */
 
-#include "random-generator/instructions/insn-operands-abbrev.h"
+#include "generator/instructions/insn-operands-abbrev.h"
 
 struct latxt_jump_info {
   LATXT_JUMP_TYPE type;

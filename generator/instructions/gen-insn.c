@@ -1,8 +1,8 @@
 #include "latxtest-common.h"
-#include "random-generator/instructions/instruction.h"
-#include "random-generator/instructions/gen-prefix.h"
-#include "random-generator/instructions/gen-opcode.h"
-#include "random-generator/instructions/gen-operands.h"
+#include "generator/instructions/instruction.h"
+#include "generator/instructions/gen-prefix.h"
+#include "generator/instructions/gen-opcode.h"
+#include "generator/instructions/gen-operands.h"
 
 uint8_t gen_random_insn(X86_INSN* insn_seed)
 {

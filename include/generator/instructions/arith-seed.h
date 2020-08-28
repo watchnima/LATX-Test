@@ -12,7 +12,7 @@
                                       } \
                                     } \
                                   };
-#include "random-generator/instructions/insn-opcode.h"
+#include "generator/instructions/insn-opcode.h"
 #undef latxt_define_opcode
 
 #endif
