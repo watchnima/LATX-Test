@@ -32,9 +32,8 @@ struct operandsInfo {
   uint32_t bytes[4];
 };
 
-static void
-oprand_init(struct latxt_operand *opnd, LATXT_OPERAND_TYPE opnd_type,
-  char *opnd_buf)
+static void oprand_init(struct latxt_operand *opnd,
+        LATXT_OPERAND_TYPE opnd_type, char *opnd_buf)
 {
   opnd->type = opnd_type;
   opnd->len = 0;
@@ -55,7 +54,7 @@ gen_opnd_func_type gen_operand_funcs[OPERAND_LAST] = {
 #undef latxt_define_operand
 
 uint8_t gen_operands(uint8_t *operands_buf,
-                            struct latxt_i386_insn_predef_info *predef_info)
+        struct latxt_i386_insn_predef_info *predef_info)
 {
   uint8_t operands_len = 0;
   LATXT_OPERAND_TYPE src1Type, src2Type, src3Type, src4Type;

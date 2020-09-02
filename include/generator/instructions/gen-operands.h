@@ -34,6 +34,6 @@ void gen_mem32(struct latxt_operand *opnd);
 
 
 uint8_t gen_operands(uint8_t *operands_buf,
-                            struct latxt_i386_insn_predef_info *predef_info);
+        struct latxt_i386_insn_predef_info *predef_info);
 
 #endif

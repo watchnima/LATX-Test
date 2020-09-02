@@ -9,8 +9,8 @@ struct latxt_opcode_info {
 };
 
 /* map { opcode type, operands abbreviation } to opcode bytes */
-struct latxt_opcode_info
-opcode_map(LATXT_OPCODE_TYPE opcodeType, LATXT_OPERANDS_ABBREV operandsAbbrev)
+struct latxt_opcode_info opcode_map(LATXT_OPCODE_TYPE opcodeType,
+        LATXT_OPERANDS_ABBREV operandsAbbrev)
 {
   struct latxt_opcode_info opcodeInfo;
 #define opcodeLen opcodeInfo.len
@@ -209,8 +209,8 @@ opcode_map(LATXT_OPCODE_TYPE opcodeType, LATXT_OPERANDS_ABBREV operandsAbbrev)
 #undef opcodeByte3
 };
 
-static LATXT_OPERANDS_ABBREV
-operands_type_to_abbrev(struct latxt_i386_insn_predef_info *predef_info)
+static LATXT_OPERANDS_ABBREV operands_type_to_abbrev(
+        struct latxt_i386_insn_predef_info *predef_info)
 {
   LATXT_OPERANDS_TYPE operandsType = predef_info->operands.type;
   LATXT_OPERANDS_ABBREV operandsAbbrev = LATXT_OPERANDS_ABBREV_LAST;
@@ -262,7 +262,7 @@ operands_type_to_abbrev(struct latxt_i386_insn_predef_info *predef_info)
 }
 
 uint8_t gen_opcode(uint8_t *opcode_buf, 
-                          struct latxt_i386_insn_predef_info *predef_info)
+        struct latxt_i386_insn_predef_info *predef_info)
 {
   uint8_t opcode_len = -1;
   LATXT_OPERANDS_ABBREV operandsAbbrev = operands_type_to_abbrev(predef_info);
