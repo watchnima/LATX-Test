@@ -2,7 +2,6 @@
 #include "generator/instructions/instruction.h"
 #include "generator/instructions/gen-operands.h"
 
-#define random(x) (rand() % x)
 
 /*
  * T Y P I C A L    B I N A R Y
@@ -43,60 +42,6 @@ oprand_init(struct latxt_operand *opnd, LATXT_OPERAND_TYPE opnd_type,
 }
 
 void gen_none(struct latxt_operand *opnd)
-{
-  return ;
-}
-
-void gen_r8(struct latxt_operand *opnd)
-{
-  return ;
-}
-
-/*TODO: realize */
-void gen_r16(struct latxt_operand *opnd)
-{
-  return ;
-}
-
-/*TODO: realize */
-void gen_r32(struct latxt_operand *opnd)
-{
-  return ;
-}
-
-void gen_imm8(struct latxt_operand *opnd)
-{
-  opnd->bytes[0] = (uint8_t)random(0x7f);
-  opnd->len = 1;
-  return ;
-}
-
-/*TODO: realize */
-void gen_imm16(struct latxt_operand *opnd)
-{
-  return ;
-}
-
-/*TODO: realize */
-void gen_imm32(struct latxt_operand *opnd)
-{
-  return ;
-}
-
-/*TODO: realize */
-void gen_mem8(struct latxt_operand *opnd)
-{
-  return ;
-}
-
-/*TODO: realize */
-void gen_mem16(struct latxt_operand *opnd)
-{
-  return ;
-}
-
-/*TODO: realize */
-void gen_mem32(struct latxt_operand *opnd)
 {
   return ;
 }

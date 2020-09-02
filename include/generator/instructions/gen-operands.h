@@ -15,6 +15,24 @@ struct latxt_operand {
   uint8_t *bytes;
 };
 
+#define random(x) (rand() % x)
+
+/* register operand */
+void gen_r8(struct latxt_operand *opnd);
+void gen_r16(struct latxt_operand *opnd);
+void gen_r32(struct latxt_operand *opnd);
+
+/* immediate operand */
+void gen_imm8(struct latxt_operand *opnd);
+void gen_imm16(struct latxt_operand *opnd);
+void gen_imm32(struct latxt_operand *opnd);
+
+/* memory operand */
+void gen_mem8(struct latxt_operand *opnd);
+void gen_mem16(struct latxt_operand *opnd);
+void gen_mem32(struct latxt_operand *opnd);
+
+
 uint8_t gen_operands(uint8_t *operands_buf,
                             struct latxt_i386_insn_predef_info *predef_info);
 
