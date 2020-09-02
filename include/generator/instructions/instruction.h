@@ -55,8 +55,12 @@ typedef enum {
  * MODRM
  */
 struct latxt_modrm {
-#define MODRM_MOD_SHIFL 6
-#define MODRM_REG_SHIFT 3
+#define MODRM_MOD_BITS 2
+#define MODRM_REG_BITS 3
+#define MODRM_RM_BITS 3
+
+#define MODRM_MOD_SHIFT (MODRM_RM_BITS + MODRM_REG_BITS)
+#define MODRM_REG_SHIFT MODRM_RM_BITS
 #define MODRM_RM_SHIFT 0
   uint8_t mod;
   uint8_t reg;
@@ -67,8 +71,12 @@ struct latxt_modrm {
  * SIB
  */
 struct latxt_sib {
-#define SIB_SCALE_SHIFL 6
-#define SIB_INDEX_SHIFT 3
+#define SIB_SCALE_BITS 2
+#define SIB_INDEX_BITS 3
+#define SIB_BASE_BITS 3
+
+#define SIB_SCALE_SHIFT (SIB_BASE_BITS + SIB_INDEX_SHIFT)
+#define SIB_INDEX_SHIFT SIB_BASE_BITS
 #define SIB_BASE_SHIFT 0
   uint8_t scale;
   uint8_t index;

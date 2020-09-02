@@ -3,6 +3,7 @@ include ../../config_host.mak
 obj := gen-insn.o \
 			 gen-prefix.o \
 			 gen-opcode.o \
+			 gen-modrm-sib.o \
 			 gen-operands.o \
 			 gen-reg.o \
 			 gen-imm.o \
