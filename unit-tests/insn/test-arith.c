@@ -10,6 +10,7 @@ static bool test_add(void)
   ccache_head_wrap();
 
   add_seed.predef_info.operands.type = AL_IMM8;
+  add_seed.predef_info.ispredef_operands_type = true;
   gen_random_insn(&add_seed);
 
   ccache_put_bytes(add_seed.bytes, add_seed.insn_len);

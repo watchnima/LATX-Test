@@ -58,7 +58,12 @@ uint8_t gen_operands(uint8_t *operands_buf,
 {
   uint8_t operands_len = 0;
   LATXT_OPERAND_TYPE src1Type, src2Type, src3Type, src4Type;
-  LATXT_OPERANDS_TYPE operandsType = predef_info->operands.type;
+  LATXT_OPERANDS_TYPE operandsType;
+  if (predef_info->ispredef_operands_type) {
+    operandsType = predef_info->operands.type;
+  } else {
+    latxtassertm(true, "random generate operandsType not implemented!");
+  }
   /* decode operand's type from operands type */
   src1Type = operandsTable[operandsType].src1_type;
   src2Type = operandsTable[operandsType].src2_type;

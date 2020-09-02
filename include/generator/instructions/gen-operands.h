@@ -12,7 +12,10 @@ typedef enum {
 struct latxt_operand {
   LATXT_OPERAND_TYPE type;
   uint8_t len;
-  uint8_t *bytes;
+  union {
+    uint8_t *bytes;
+    uint8_t reg;
+  };
 };
 
 #define random(x) (rand() % x)

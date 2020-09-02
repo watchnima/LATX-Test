@@ -2,57 +2,53 @@
 #include "generator/instructions/instruction.h"
 #include "generator/instructions/gen-operands.h"
 
-static bool NO_AL(LATXT_OPCODE_TYPE opcodeType)
-{
-  bool no_AL = false;
-  switch (opcodeType) {
-    case X86_ISA_ADD:
-    case X86_ISA_ADC:
-    case X86_ISA_AND:
-    case X86_ISA_XOR:
-      no_AL = true;
-      break;
-    default:
-      break;
-  }
-  return no_AL;
-}
+typedef enum {
+  REG_AL,
+  REG_CL,
+  REG_DL,
+  REG_BL,
+  REG_AH,
+  REG_CH,
+  REG_DH,
+  REG_BH,
+  LATXT_REG8_LAST
+} LATXT_REG8_TYPE;
 
-static bool NO_AX(LATXT_OPCODE_TYPE opcodeType)
-{
-  bool no_AX = false;
-  switch (opcodeType) {
-    case X86_ISA_ADD:
-    case X86_ISA_ADC:
-    case X86_ISA_AND:
-    case X86_ISA_XOR:
-      no_AX = true;
-      break;
-    default:
-      break;
-  }
-  return no_AX;
-}
+typedef enum {
+  REG_AX,
+  REG_CX,
+  REG_DX,
+  REG_BX,
+  REG_SP,
+  REG_BP,
+  REG_SI,
+  REG_DI,
+  LATXT_REG16_LAST
+} LATXT_REG16_TYPE;
 
-static bool NO_eAX(LATXT_OPCODE_TYPE opcodeType)
-{
-  return false;
-}
+typedef enum {
+  REG_EAX,
+  REG_ECX,
+  REG_EDX,
+  REG_EBX,
+  REG_ESP,
+  REG_EBP,
+  REG_ESI,
+  REG_EDI,
+  LATXT_REG32_LAST
+} LATXT_REG32_TYPE;
 
-/*TODO: realize */
 void gen_r8(struct latxt_operand *opnd)
 {
-  return ;
+  opnd->reg = random(LATXT_REG8_LAST);
 }
 
-/*TODO: realize */
 void gen_r16(struct latxt_operand *opnd)
 {
-  return ;
+  opnd->reg = random(LATXT_REG16_LAST);
 }
 
-/*TODO: realize */
 void gen_r32(struct latxt_operand *opnd)
 {
-  return ;
+  opnd->reg = random(LATXT_REG32_LAST);
 }
