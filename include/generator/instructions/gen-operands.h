@@ -13,7 +13,7 @@ struct latxt_operand {
   LATXT_OPERAND_TYPE type;
   uint8_t len;
   union {
-    uint8_t *bytes;
+    char *bytes;
     uint8_t reg;
   };
 };
@@ -36,7 +36,7 @@ void gen_mem16(struct latxt_operand *opnd);
 void gen_mem32(struct latxt_operand *opnd);
 
 
-uint8_t gen_operands(uint8_t *operands_buf,
+uint8_t gen_operands(char *operands_buf,
         struct latxt_i386_insn_predef_info *predef_info);
 
 #endif

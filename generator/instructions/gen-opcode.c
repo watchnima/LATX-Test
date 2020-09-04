@@ -261,7 +261,7 @@ static LATXT_OPERANDS_ABBREV operands_type_to_abbrev(
   return operandsAbbrev;
 }
 
-uint8_t gen_opcode(uint8_t *opcode_buf, 
+uint8_t gen_opcode(char *opcode_buf, 
         struct latxt_i386_insn_predef_info *predef_info)
 {
   uint8_t opcode_len = -1;

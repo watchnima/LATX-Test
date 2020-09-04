@@ -53,12 +53,12 @@ gen_opnd_func_type gen_operand_funcs[OPERAND_LAST] = {
 };
 #undef latxt_define_operand
 
-uint8_t gen_operands(uint8_t *operands_buf,
+uint8_t gen_operands(char *operands_buf,
         struct latxt_i386_insn_predef_info *predef_info)
 {
   uint8_t operands_len = 0;
   LATXT_OPERAND_TYPE src1Type, src2Type, src3Type, src4Type;
-  LATXT_OPERANDS_TYPE operandsType;
+  LATXT_OPERANDS_TYPE operandsType = LATXT_OPERANDS_LAST;
   if (predef_info->ispredef_operands_type) {
     operandsType = predef_info->operands.type;
   } else {

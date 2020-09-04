@@ -200,7 +200,7 @@ char address_form_sib[LATXT_ADDRESS_FORM_LAST][1 << SIB_BASE_BITS] = {
   {0xF8, 0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE, 0xFF}
 };
 
-uint8_t gen_modrm_sib(uint8_t *opcode_buf, 
+uint8_t gen_modrm_sib(char *opcode_buf, 
         struct latxt_i386_insn_predef_info *predef_info)
 {
   return 0;
