@@ -1,8 +1,5 @@
 #include "latxtest-common.h"
 #include "unit-tests/insn-test.h"
-#include "generator/generator.h"
-
-extern struct generator_params generator_params;
 
 enum {
   OK_ARG,
@@ -25,8 +22,6 @@ static int parse_args(int argc, char *argv[])
     if (strcmp(param, "-h") == 0 || strcmp(param, "-help") == 0) {
       usage();
       return EXIT_ARG;
-    } else if(strcmp(param, "-boundary") == 0) {
-      generator_params.isRandom = false;
     } else {
       printl("Parse arguments error!\n");
       usage();
@@ -46,10 +41,8 @@ int main(int argc, char *argv[])
   if (op == ERR_ARG || op == EXIT_ARG) {
     return 0;
   }
-  if (!gen_init())
-    return 0;
-  if (test_arith()) {
-    ;
+  if (!gen_test_file_MOV()) {
+      printl("genrate MOV test file failed!\n");
   }
   return 0;
 }

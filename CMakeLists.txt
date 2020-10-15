@@ -2,14 +2,17 @@ cmake_minimum_required(VERSION 3.10)
 
 project(LATX-Test)
 
-include_directories(include)
+# x86-insn-generator library
+add_subdirectory(x86-insn-generator)
 
-SET(CMAKE_C_FLAGS "-m32 -g -O0 -Wall")
-add_subdirectory(generator)
-add_subdirectory(tools)
+SET(srcdir ${CMAKE_CURRENT_SOURCE_DIR})
+SET(CMAKE_C_FLAGS "-g -O0 -Wall -DHAVE_CONFIG_H")
+
+include_directories(${srcdir}
+                    ${srcdir}/x86-insn-generator
+                    ${srcdir}/x86-insn-generator/include
+                    ${srcdir}/x86-insn-generator/x86
+                    ${srcdir}/x86-insn-generator/asm
+                    ${srcdir}/include)
+add_subdirectory(output)
 add_subdirectory(unit-tests)
-
-# distorm library
-SET(CMAKE_C_FLAGS "-m32 -g -O2 -Wall")
-file(GLOB DISTORM_SRCS distorm/src/*.c)
-add_library(distorm3 STATIC ${DISTORM_SRCS})
