@@ -1,6 +1,15 @@
 #ifndef TEST_SOUT_H
 #define TEST_SOUT_H
 
+enum output_type {
+    OUTPUT_RAWDATA,
+    OUTPUT_INSN
+};
+
+struct output_data {
+    enum output_type type;
+    const char *buf;
+};
 /*
  * s-file generators should look like this
  */
@@ -18,7 +27,7 @@ struct ofmt {
     /*
      * Print assembly codes into assembly file.
      */
-    void (*output)(const char* data);
+    void (*output)(struct output_data* data);
 };
 
 extern const struct ofmt *ofmt;

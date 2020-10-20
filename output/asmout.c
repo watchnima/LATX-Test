@@ -26,9 +26,20 @@ static void asm_init(const char* fname)
     }
 }
 
-static void asm_out(const char* data)
+static void asm_out(struct output_data* data)
 {
-    fprintf(asmfp, "%s\n", data);
+    if (data == NULL)
+        return;
+    switch (data->type) {
+        case OUTPUT_RAWDATA:
+            fprintf(asmfp, "%s", data->buf);
+            break;
+        case OUTPUT_INSN:
+            fprintf(asmfp, "  %s\n", data->buf);
+            break;
+        default:
+            break;
+    }
 }
 
 static const struct ofmt asm_fmt = {

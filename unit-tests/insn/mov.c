@@ -9,17 +9,33 @@ static insn_seed MOV_seed =
     .opcode = I_MOV
 };
 
+static const char fout_head[] = "section .text\n  global _start\n_start:\n";
+static const char fout_tail[] = "\n  mov ax,1\n  mov ebx,0\n  int 80h";
+
 bool gen_test_file_MOV(void)
 {
-    ofmt->init("test_MOV.s");
+    struct output_data data;
     generator_init(true);
+
+    ofmt->init("test_MOV.s");
+    
+    data.type = OUTPUT_RAWDATA;
+    data.buf = (const char *)fout_head;
+    ofmt->output(&data);
 
     assign_arr5(MOV_seed.opd, REG_GPR|BITS16,REG_SREG,0,0,0);
     while ((buf = generate_str(&MOV_seed)) != NULL) {
-        ofmt->output(buf);
+        data.type = OUTPUT_INSN;
+        data.buf = buf;
+        ofmt->output(&data);
     }
 
-    generator_exit();
+    data.type = OUTPUT_RAWDATA;
+    data.buf = (const char *)fout_tail;
+    ofmt->output(&data);
+    
     ofmt->cleanup();
+
+    generator_exit();
     return true;
 }
