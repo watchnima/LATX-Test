@@ -1,9 +1,9 @@
 #include "latxtest-common.h"
 #include "unit-tests/insn-test.h"
 #include "x86-insn-generator/include/generator.h"
-#include "output/ofmt.h"
+#include "x86-insn-generator/include/ofmt.h"
+#include "ut.h"
 
-static const char *buf;
 static insn_seed MOV_seed =
 {
     .opcode = I_MOV
@@ -24,11 +24,8 @@ bool gen_test_file_MOV(void)
     ofmt->output(&data);
 
     assign_arr5(MOV_seed.opd, REG_GPR|BITS16,REG_SREG,0,0,0);
-    while ((buf = generate_str(&MOV_seed)) != NULL) {
-        data.type = OUTPUT_INSN;
-        data.buf = buf;
-        ofmt->output(&data);
-    }
+
+    gsp(&MOV_seed, ofmt);
 
     data.type = OUTPUT_RAWDATA;
     data.buf = (const char *)fout_tail;

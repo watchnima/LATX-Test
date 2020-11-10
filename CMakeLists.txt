@@ -14,5 +14,4 @@ include_directories(${srcdir}
                     ${srcdir}/x86-insn-generator/x86
                     ${srcdir}/x86-insn-generator/asm
                     ${srcdir}/include)
-add_subdirectory(output)
 add_subdirectory(unit-tests)
